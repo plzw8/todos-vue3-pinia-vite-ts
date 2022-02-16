@@ -31,7 +31,9 @@ const resVal = computed(() => {
         >
       </li>
     </ul>
-    <button class="clear-completed">Clear completed</button>
+    <button class="clear-completed" @click="todo.clearCompleted">
+      Clear completed
+    </button>
   </footer>
 </template>
 

@@ -68,6 +68,10 @@ const useTodoStore = defineStore('todo', {
     changeType(type: SelectType) {
       this.currentType = type;
     },
+    // 清空组件
+    clearCompleted() {
+      this.list = this.list.filter((item) => !item.isDone);
+    },
   },
 });
 export default useTodoStore;
