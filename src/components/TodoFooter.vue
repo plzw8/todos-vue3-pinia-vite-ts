@@ -1,8 +1,19 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { computed } from 'vue';
+import useStore from '../store';
+
+const { todo } = useStore();
+// 计算剩余长度
+const resVal = computed(() => {
+  return todo.list.filter((item) => !item.isDone).length;
+});
+</script>
 
 <template>
   <footer class="footer">
-    <span class="todo-count"><strong>0</strong> item left</span>
+    <span class="todo-count"
+      ><strong>{{ resVal }}</strong> item left</span
+    >
     <ul class="filters">
       <li>
         <a class="selected" href="#/">All</a>
