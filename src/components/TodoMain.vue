@@ -1,6 +1,13 @@
 <script setup lang="ts">
 import useStore from '../store';
 const { todo } = useStore();
+// 数据持久化
+todo.$subscribe(() => {
+  // 保存list
+  localStorage.setItem('vue-ts-pinia', JSON.stringify(todo.list));
+  // 保存type
+  localStorage.setItem('vue-pinia-type', todo.currentType);
+});
 </script>
 
 <template>

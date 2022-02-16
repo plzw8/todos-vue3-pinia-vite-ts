@@ -9,24 +9,11 @@ type SelectType = 'all' | 'active' | 'completed';
 const useTodoStore = defineStore('todo', {
   state() {
     return {
-      list: [
-        {
-          id: 1,
-          content: 'vue',
-          isDone: false,
-        },
-        {
-          id: 2,
-          content: 'react',
-          isDone: false,
-        },
-        {
-          id: 4,
-          content: 'angular',
-          isDone: true,
-        },
-      ] as ITodoItem[],
-      currentType: 'all' as SelectType,
+      list: JSON.parse(
+        localStorage.getItem('vue-ts-pinia') || '[]'
+      ) as ITodoItem[],
+      currentType: (localStorage.getItem('vue-pinia-type') ||
+        'all') as SelectType,
     };
   },
   getters: {
