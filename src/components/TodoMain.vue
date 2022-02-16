@@ -1,25 +1,24 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import useStore from '../store';
+const { todo } = useStore();
+</script>
 
 <template>
   <section class="main">
     <input id="toggle-all" class="toggle-all" type="checkbox" />
     <label for="toggle-all">Mark all as complete</label>
     <ul class="todo-list">
-      <li class="completed">
+      <li
+        :class="{ completed: item.isDone }"
+        v-for="item in todo.list"
+        :key="item.id"
+      >
         <div class="view">
-          <input class="toggle" type="checkbox" checked />
-          <label>Taste JavaScript</label>
+          <input class="toggle" type="checkbox" v-model="item.isDone" />
+          <label>{{ item.content }}</label>
           <button class="destroy"></button>
         </div>
         <input class="edit" value="Create a TodoMVC template" />
-      </li>
-      <li>
-        <div class="view">
-          <input class="toggle" type="checkbox" />
-          <label>Buy a unicorn</label>
-          <button class="destroy"></button>
-        </div>
-        <input class="edit" value="Rule the web" />
       </li>
     </ul>
   </section>

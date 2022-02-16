@@ -12,6 +12,11 @@ const useTodoStore = defineStore('todo', {
         {
           id: 2,
           content: 'react',
+          isDone: false,
+        },
+        {
+          id: 4,
+          content: 'angular',
           isDone: true,
         },
       ],
