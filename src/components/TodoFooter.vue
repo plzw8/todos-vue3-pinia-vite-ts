@@ -15,14 +15,20 @@ const resVal = computed(() => {
       ><strong>{{ resVal }}</strong> item left</span
     >
     <ul class="filters">
-      <li>
-        <a class="selected" href="#/">All</a>
+      <li @click="todo.changeType('all')">
+        <a :class="{ selected: todo.currentType === 'all' }" href="#/">All</a>
       </li>
-      <li>
-        <a href="#/active">Active</a>
+      <li @click="todo.changeType('active')">
+        <a :class="{ selected: todo.currentType === 'active' }" href="#/active"
+          >Active</a
+        >
       </li>
-      <li>
-        <a href="#/completed">Completed</a>
+      <li @click="todo.changeType('completed')">
+        <a
+          :class="{ selected: todo.currentType === 'completed' }"
+          href="#/completed"
+          >Completed</a
+        >
       </li>
     </ul>
     <button class="clear-completed">Clear completed</button>

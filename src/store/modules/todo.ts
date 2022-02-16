@@ -1,13 +1,13 @@
 import { defineStore } from 'pinia';
+interface ITodoItem {
+  id: number;
+  content: string;
+  isDone: boolean;
+}
+type SelectType = 'all' | 'active' | 'completed';
 // 声明仓库
 const useTodoStore = defineStore('todo', {
   state() {
-    interface ITodoItem {
-      id: number;
-      content: string;
-      isDone: boolean;
-    }
-    type selectType = 'all' | 'selected' | 'completed';
     return {
       list: [
         {
@@ -26,7 +26,7 @@ const useTodoStore = defineStore('todo', {
           isDone: true,
         },
       ] as ITodoItem[],
-      currentType: '' as selectType,
+      currentType: 'all' as SelectType,
     };
   },
   getters: {
@@ -52,6 +52,10 @@ const useTodoStore = defineStore('todo', {
     // 删除todo项
     delItem(id: number) {
       this.list = this.list.filter((item) => item.id !== id);
+    },
+    // 更改当前type
+    changeType(type: SelectType) {
+      this.currentType = type;
     },
   },
 });
