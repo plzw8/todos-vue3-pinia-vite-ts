@@ -22,7 +22,18 @@ const useTodoStore = defineStore('todo', {
       ],
     };
   },
-  getters: {},
-  actions: {},
+  getters: {
+    isAll(): boolean {
+      return (
+        this.list.length > 0 && this.list.every((item) => item.isDone === true)
+      );
+    },
+  },
+  actions: {
+    // 全选控制小选
+    isSelectAllAction(bl: boolean) {
+      this.list.map((item) => (item.isDone = bl));
+    },
+  },
 });
 export default useTodoStore;

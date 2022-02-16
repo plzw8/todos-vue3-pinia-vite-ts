@@ -5,7 +5,13 @@ const { todo } = useStore();
 
 <template>
   <section class="main">
-    <input id="toggle-all" class="toggle-all" type="checkbox" />
+    <input
+      id="toggle-all"
+      class="toggle-all"
+      type="checkbox"
+      :checked="todo.isAll"
+      @change="todo.isSelectAllAction(!todo.isAll)"
+    />
     <label for="toggle-all">Mark all as complete</label>
     <ul class="todo-list">
       <li
