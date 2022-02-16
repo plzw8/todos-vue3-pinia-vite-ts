@@ -2,6 +2,12 @@ import { defineStore } from 'pinia';
 // 声明仓库
 const useTodoStore = defineStore('todo', {
   state() {
+    interface ITodoItem {
+      id: number;
+      content: string;
+      isDone: boolean;
+    }
+    type selectType = 'all' | 'selected' | 'completed';
     return {
       list: [
         {
@@ -19,7 +25,8 @@ const useTodoStore = defineStore('todo', {
           content: 'angular',
           isDone: true,
         },
-      ],
+      ] as ITodoItem[],
+      currentType: '' as selectType,
     };
   },
   getters: {
