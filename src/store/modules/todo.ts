@@ -34,6 +34,14 @@ const useTodoStore = defineStore('todo', {
     isSelectAllAction(bl: boolean) {
       this.list.map((item) => (item.isDone = bl));
     },
+    // 添加todo项
+    addItem(content: string) {
+      this.list.unshift({
+        id: Date.now(),
+        content,
+        isDone: false,
+      });
+    },
   },
 });
 export default useTodoStore;
