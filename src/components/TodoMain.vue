@@ -22,7 +22,7 @@ const { todo } = useStore();
         <div class="view">
           <input class="toggle" type="checkbox" v-model="item.isDone" />
           <label>{{ item.content }}</label>
-          <button class="destroy"></button>
+          <button class="destroy" @click="todo.delItem(item.id)"></button>
         </div>
         <input class="edit" value="Create a TodoMVC template" />
       </li>

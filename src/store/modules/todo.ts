@@ -42,6 +42,10 @@ const useTodoStore = defineStore('todo', {
         isDone: false,
       });
     },
+    // 删除todo项
+    delItem(id: number) {
+      this.list = this.list.filter((item) => item.id !== id);
+    },
   },
 });
 export default useTodoStore;
