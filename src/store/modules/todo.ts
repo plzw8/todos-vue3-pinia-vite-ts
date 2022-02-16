@@ -30,10 +30,21 @@ const useTodoStore = defineStore('todo', {
     };
   },
   getters: {
+    // 父选框状态
     isAll(): boolean {
       return (
         this.list.length > 0 && this.list.every((item) => item.isDone === true)
       );
+    },
+    // 展示列表
+    showList(): ITodoItem[] {
+      if (this.currentType === 'active') {
+        return this.list.filter((item) => !item.isDone);
+      } else if (this.currentType === 'completed') {
+        return this.list.filter((item) => item.isDone);
+      } else {
+        return this.list;
+      }
     },
   },
   actions: {

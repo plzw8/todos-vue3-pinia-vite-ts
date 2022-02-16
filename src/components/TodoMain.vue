@@ -16,7 +16,7 @@ const { todo } = useStore();
     <ul class="todo-list">
       <li
         :class="{ completed: item.isDone }"
-        v-for="item in todo.list"
+        v-for="item in todo.showList"
         :key="item.id"
       >
         <div class="view">
